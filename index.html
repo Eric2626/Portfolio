@@ -178,7 +178,44 @@
       color: #fff0fb;
       font: 400 clamp(1.6rem, 4vw, 2.7rem)/1.15 Georgia, serif;
     }
-    .stage { position: relative; width: min(92vw, 48rem); }
+    .stage { position: relative; width: min(94vw, 58rem); }
+    .stage.is-3d {
+      aspect-ratio: 1.62;
+      min-height: 22rem;
+    }
+    .stage.is-3d .scene-art { display: none; }
+    .stage canvas {
+      position: absolute;
+      inset: 0;
+      display: block;
+      width: 100%;
+      height: 100%;
+      touch-action: pan-y;
+      cursor: grab;
+    }
+    .stage canvas:active { cursor: grabbing; }
+    .stage.is-3d .signpost {
+      position: absolute;
+      inset: 0;
+      display: block;
+      width: auto;
+      margin: 0;
+      pointer-events: none;
+    }
+    .stage.is-3d .signpost a {
+      position: absolute;
+      width: max-content;
+      max-width: 45%;
+      min-height: 36px;
+      transform: translate(-50%, -50%) rotate(var(--tilt, 0deg));
+      pointer-events: auto;
+    }
+    @media (max-width: 32rem) {
+      .stage.is-3d .signpost a { min-height: 44px; }
+    }
+    .stage.is-3d .signpost a:first-child { --tilt: 4deg; }
+    .stage.is-3d .signpost a:nth-child(2) { --tilt: -4deg; }
+    .stage.is-3d .signpost a:nth-child(3) { --tilt: 3deg; }
     .scene-art { display: block; width: 100%; height: auto; }
     .signpost {
       position: absolute;
@@ -271,7 +308,7 @@
         <a href="#skills">Skills <span aria-hidden="true">↗</span></a>
       </nav>
     </div>
-    <p class="scene-caption">Pick a sign to explore</p>
+    <p class="scene-caption" id="scene-hint">Pick a sign to explore</p>
   </section>
   <header class="masthead">
     <div class="wrap">
@@ -336,6 +373,7 @@
       </ul>
     </section>
   </main>
+  <script type="module" src="arcade.js"></script>
   <footer><div class="wrap">Eric Munkhtulga Davaasuren · Web Programming</div></footer>
 </body>
 </html>
