@@ -135,9 +135,144 @@
       .hero, .intro { grid-template-columns: 1fr; }
       .mastline { align-items: baseline; }
     }
+
+    .start-screen {
+      min-height: 100svh;
+      display: grid;
+      place-items: center;
+      text-align: center;
+      padding: 1.5rem;
+      background: #050408;
+    }
+    .start-screen > div { display: grid; justify-items: center; gap: 1rem; }
+    .start-word {
+      display: inline-block;
+      padding: .5rem 1rem;
+      color: #fff6ff;
+      font: 400 clamp(3rem, 10vw, 6rem)/1 Georgia, serif;
+      letter-spacing: .14em;
+      text-decoration: none;
+    }
+    .start-word:hover, .start-word:focus-visible {
+      color: #ffc4f3;
+      text-shadow: 0 0 1rem #e769e3;
+    }
+    .start-caption, .scene-caption {
+      color: #d3b8dc;
+      font: 600 .75rem/1.5 ui-monospace, monospace;
+      letter-spacing: .18em;
+      text-transform: uppercase;
+    }
+    .scene {
+      min-height: 100svh;
+      display: grid;
+      place-content: center;
+      justify-items: center;
+      padding: 2.5rem 1rem;
+      border-bottom: 1px solid #5f366c;
+      background: radial-gradient(ellipse at 58% 65%, #301735, #080710 66%);
+    }
+    .scene h2 {
+      margin: .5rem 0 0;
+      text-align: center;
+      color: #fff0fb;
+      font: 400 clamp(1.6rem, 4vw, 2.7rem)/1.15 Georgia, serif;
+    }
+    .stage { position: relative; width: min(92vw, 48rem); }
+    .scene-art { display: block; width: 100%; height: auto; }
+    .signpost {
+      position: absolute;
+      top: 36%;
+      left: 12%;
+      width: 29%;
+      display: grid;
+      gap: clamp(.3rem, 1.4vw, .75rem);
+    }
+    .signpost a {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: .35rem;
+      min-height: 44px;
+      padding: .25rem .65rem;
+      border: 2px solid currentColor;
+      background: #160f22;
+      box-shadow: 0 0 .65rem -0.2rem currentColor;
+      font: 700 clamp(.75rem, 2vw, 1rem)/1.2 ui-monospace, monospace;
+      text-decoration: none;
+    }
+    .signpost a:nth-child(1) { color: #ff9be4; transform: rotate(4deg); }
+    .signpost a:nth-child(2) { color: #99efff; transform: rotate(-4deg); }
+    .signpost a:nth-child(3) { color: #ffe19c; transform: rotate(3deg); }
+    .signpost a:hover, .signpost a:focus-visible {
+      background: #362141;
+      box-shadow: 0 0 1rem -.15rem currentColor;
+    }
+    @media (max-width: 32rem) {
+      .signpost {
+        position: static;
+        width: min(100%, 18rem);
+        margin: -1rem auto 1.5rem;
+      }
+    }
+    @media (prefers-reduced-motion: no-preference) {
+      html { scroll-behavior: smooth; }
+    }
   </style>
 </head>
 <body>
+  <section class="start-screen" aria-label="Portfolio entrance">
+    <div>
+      <p class="start-caption">Eric Munkhtulga Davaasuren</p>
+      <a class="start-word" href="#arcade" aria-label="Start exploring the portfolio">START</a>
+      <p class="start-caption">Web Programming Portfolio</p>
+    </div>
+  </section>
+  <section class="scene" id="arcade" aria-labelledby="scene-title" tabindex="-1">
+    <p class="scene-caption">Portfolio directory</p>
+    <h2 id="scene-title">Eric’s Arcade</h2>
+    <div class="stage">
+      <svg class="scene-art" viewBox="0 0 720 475" aria-hidden="true">
+        <defs>
+          <linearGradient id="wall" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop stop-color="#36214e"/><stop offset="1" stop-color="#11172d"/>
+          </linearGradient>
+          <linearGradient id="floor" x1="0%" y1="0%" x2="0%" y2="100%">
+            <stop stop-color="#282042"/><stop offset="1" stop-color="#090810"/>
+          </linearGradient>
+          <filter id="glow" x="-50%" y="-100%" width="200%" height="300%">
+            <feGaussianBlur stdDeviation="5" result="blur"/>
+            <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+          </filter>
+        </defs>
+        <path d="M0 366 720 345v130H0Z" fill="url(#floor)"/>
+        <path d="M0 431 720 396M120 475 461 354m-75 121 139-119m123 119-62-119" fill="none" stroke="#654a80" opacity=".35"/>
+        <ellipse cx="467" cy="411" rx="211" ry="29" fill="#080610" opacity=".7"/>
+        <path d="m306 163 265 15 63-48-246-15Z" fill="#4f3664"/>
+        <path d="M306 163l265 15v222l-265-26Z" fill="url(#wall)" stroke="#725084" stroke-width="2"/>
+        <path d="m571 178 63-48v214l-63 56Z" fill="#161d35" stroke="#514f79" stroke-width="2"/>
+        <path d="m288 239 293 18 56-27-282-18Z" fill="#943276"/>
+        <path d="m288 239 293 18-10 21-275-18Z" fill="#452048"/>
+        <path d="m329 278 222 17v68l-222-19Z" fill="#101426" stroke="#795991" stroke-width="2"/>
+        <path d="m348 319 54 4m20 2 54 4m20 2 32 3" stroke="#f799df" stroke-width="3" filter="url(#glow)"/>
+        <path d="m330 360 220 19" stroke="#53e5ff" stroke-width="3" filter="url(#glow)"/>
+        <path d="m331 184 219 13v36l-219-14Z" fill="#151024" stroke="#f687e8" stroke-width="2" filter="url(#glow)"/>
+        <text x="441" y="215" transform="rotate(3 441 215)" text-anchor="middle" fill="#fff1fc" font-family="monospace" font-size="22" letter-spacing="3">ERIC / ARCADE</text>
+        <path d="m597 249 23-18v77l-23 19Z" fill="#10273b" stroke="#57d9ff"/>
+        <path d="m602 272 13-10m-13 24 13-10m-13 24 13-10" stroke="#57d9ff" stroke-width="2" filter="url(#glow)"/>
+        <path d="M385 115V76h55v44m79 4V86h34v39M191 398V105m-24 293h48" stroke="#795688" stroke-width="6" fill="none"/>
+        <path d="M191 115h62m-62 14h-44" stroke="#8b659c" stroke-width="4"/>
+        <circle cx="256" cy="117" r="11" fill="#ffd4fc" filter="url(#glow)"/>
+        <circle cx="144" cy="130" r="8" fill="#adf5ff" filter="url(#glow)"/>
+      </svg>
+      <nav class="signpost" aria-label="Arcade directory">
+        <a href="#projects">Projects <span aria-hidden="true">↗</span></a>
+        <a href="#about">About me <span aria-hidden="true">↖</span></a>
+        <a href="#skills">Skills <span aria-hidden="true">↗</span></a>
+      </nav>
+    </div>
+    <p class="scene-caption">Pick a sign to explore</p>
+  </section>
   <header class="masthead">
     <div class="wrap">
       <div class="mastline">
