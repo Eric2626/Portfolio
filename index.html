@@ -5,109 +5,202 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Eric Munkhtulga Davaasuren | Portfolio</title>
   <style>
+    :root {
+      color-scheme: dark;
+      --ink: #f4f1e8;
+      --muted: #c0c8d7;
+      --night: #0c101b;
+      --panel: #141c2c;
+      --blue: #a7c3ff;
+      --line: #35445e;
+      --gold: #edc982;
+    }
+    *, *::before, *::after { box-sizing: border-box; }
     body {
       margin: 0;
-      background: #eff4f9;
-      color: #172940;
+      background: var(--night);
+      color: var(--ink);
       font: 1rem/1.65 system-ui, sans-serif;
     }
-    .container {
-      max-width: 52rem;
+    .wrap {
+      width: min(100% - 2.5rem, 70rem);
       margin-inline: auto;
-      padding: 2rem 1.25rem;
     }
-    header {
-      background: #173453;
-      color: white;
+    a { color: var(--blue); text-underline-offset: .25em; }
+    a:hover { color: var(--gold); }
+    a:focus-visible { outline: 2px solid var(--gold); outline-offset: .3rem; }
+    h1, h2, h3, p, figure { margin: 0; }
+    h1, h2, h3 { font-family: Georgia, serif; font-weight: 400; }
+    .masthead {
+      border-bottom: 1px solid var(--line);
+      background: radial-gradient(ellipse at 86% 18%, #1c3765 0, transparent 64%), var(--night);
     }
-    header p, h1 {
-      margin: 0;
+    .mastline, .section-label, figcaption, .project-meta {
+      font: 600 .72rem/1.5 ui-monospace, monospace;
+      letter-spacing: .13em;
+      text-transform: uppercase;
     }
+    .mastline {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      gap: .5rem 1.5rem;
+      padding-block: 1.25rem;
+      border-bottom: 1px solid var(--line);
+      color: var(--muted);
+    }
+    .mastline nav { display: flex; gap: 1.25rem; }
+    .mastline a { color: inherit; text-decoration: none; }
+    .mastline a:hover { color: var(--gold); text-decoration: underline; }
+    .hero {
+      display: grid;
+      grid-template-columns: minmax(0, 1.15fr) minmax(0, .85fr);
+      align-items: center;
+      gap: clamp(2rem, 6vw, 6rem);
+      padding-block: clamp(3rem, 8vw, 7rem);
+    }
+    .section-label { color: var(--gold); }
     h1 {
-      font-size: clamp(1.8rem, 6vw, 3rem);
-      line-height: 1.15;
-      margin-block: .5rem;
+      font-size: clamp(2.35rem, 6.6vw, 6rem);
+      line-height: .98;
+      letter-spacing: -.065em;
+      margin-block: 1rem 1.35rem;
     }
-    .profile-photo {
-      display: block;
-      width: min(100%, 11rem);
-      height: auto;
-      margin-bottom: 1rem;
-      border-radius: .75rem;
+    h1 span { display: block; color: var(--blue); }
+    .subtitle, .about p:last-child, .projects p { color: var(--muted); }
+    .portrait {
+      width: min(100%, 28rem);
+      padding: .6rem;
+      border: 1px solid var(--blue);
+      background: var(--night);
+      box-shadow: .6rem .6rem 0 #253d65;
     }
-    section {
-      background: white;
-      border: 1px solid #d6e1ee;
-      border-radius: .75rem;
-      padding: 1.25rem;
-      margin-bottom: 1rem;
+    .profile-photo { display: block; width: 100%; height: auto; }
+    figcaption { padding: .65rem .25rem .15rem; color: var(--muted); }
+    .intro {
+      display: grid;
+      grid-template-columns: minmax(0, 1.25fr) minmax(0, .75fr);
+      gap: 2rem clamp(2rem, 8vw, 7rem);
+      padding-block: clamp(2.75rem, 6vw, 5rem);
     }
-    h2, h3 {
-      margin-top: 0;
+    h2 {
+      font-size: clamp(1.9rem, 4vw, 3rem);
+      line-height: 1.1;
+      margin-block: .5rem 1rem;
+    }
+    .skills ul, .projects {
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+    .skills ul { display: flex; flex-wrap: wrap; gap: .5rem; }
+    .skills li {
+      padding: .35rem .75rem;
+      border: 1px solid var(--line);
+      border-radius: 2rem;
+      color: var(--muted);
+      font-size: .875rem;
+    }
+    .work {
+      border-top: 1px solid var(--line);
+      padding-block: clamp(2.75rem, 6vw, 5rem);
     }
     .projects {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(min(100%, 13rem), 1fr));
-      gap: .75rem;
-      list-style: none;
-      padding: 0;
+      grid-template-columns: repeat(auto-fit, minmax(min(100%, 17rem), 1fr));
+      gap: 1rem;
+      margin-top: 1.5rem;
     }
     .projects li {
-      background: #eff4f9;
-      border-radius: .5rem;
-      padding: 1rem;
+      border: 1px solid var(--line);
+      border-top: 3px solid var(--blue);
+      padding: 1.25rem;
+      background: var(--panel);
     }
-    .projects a {
-      font-weight: 700;
+    .projects li:nth-child(2) { border-top-color: var(--gold); }
+    .projects li:nth-child(3) { border-top-color: #c5b4f9; }
+    .project-meta { color: var(--muted); }
+    .projects h3 {
+      font-size: 1.65rem;
+      line-height: 1.15;
+      margin-block: 1.4rem .65rem;
     }
-    .projects p {
-      margin: .4rem 0 0;
+    footer {
+      border-top: 1px solid var(--line);
+      color: var(--muted);
+      padding-block: 1.25rem;
+      font-size: .85rem;
     }
-    a {
-      color: #154c91;
+    @media (max-width: 44rem) {
+      .hero, .intro { grid-template-columns: 1fr; }
+      .mastline { align-items: baseline; }
     }
   </style>
 </head>
 <body>
-  <header>
-    <div class="container">
-      <img class="profile-photo" src="profile.png" alt="Eric Munkhtulga Davaasuren" width="853" height="804">
-      <p>Web Programming Portfolio</p>
-      <h1>Eric Munkhtulga Davaasuren</h1>
-      <p>Computer Science student at Gachon University</p>
+  <header class="masthead">
+    <div class="wrap">
+      <div class="mastline">
+        <span>Web Programming Portfolio</span>
+        <nav aria-label="Portfolio">
+          <a href="#about">About</a>
+          <a href="#skills">Skills</a>
+          <a href="#projects">Projects</a>
+        </nav>
+      </div>
+      <div class="hero">
+        <div>
+          <p class="section-label">Gachon University / Computer Science</p>
+          <h1>Eric <span>Munkhtulga Davaasuren</span></h1>
+          <p class="subtitle">A collection of my Web Programming coursework.</p>
+        </div>
+        <figure class="portrait">
+          <img class="profile-photo" src="profile.png" alt="Eric Munkhtulga Davaasuren" width="853" height="804">
+          <figcaption>Fig. 01 / Eric</figcaption>
+        </figure>
+      </div>
     </div>
   </header>
-  <main class="container">
-    <section aria-labelledby="about">
-      <h2 id="about">About Me</h2>
-      <p>Hi, I’m Eric. I study Computer Science at Gachon University and enjoy learning how websites work. In my Web Programming course, I practice building pages with HTML and CSS and adding interactivity with JavaScript.</p>
-    </section>
-    <section aria-labelledby="skills">
-      <h2 id="skills">Skills</h2>
-      <ul>
-        <li>Semantic HTML and accessible page structure</li>
-        <li>CSS and responsive layouts</li>
-        <li>JavaScript, browser events, and APIs</li>
-        <li>Git and GitHub</li>
-      </ul>
-    </section>
-    <section aria-labelledby="projects">
+  <main class="wrap">
+    <div class="intro">
+      <section class="about" aria-labelledby="about">
+        <p class="section-label" aria-hidden="true">01 / Profile</p>
+        <h2 id="about">About Me</h2>
+        <p>Hi, I’m Eric. I study Computer Science at Gachon University and enjoy learning how websites work. In my Web Programming course, I practice building pages with HTML and CSS and adding interactivity with JavaScript.</p>
+      </section>
+      <section class="skills" aria-labelledby="skills">
+        <p class="section-label" aria-hidden="true">02 / Toolkit</p>
+        <h2 id="skills">Skills</h2>
+        <ul role="list">
+          <li>Semantic HTML and accessible page structure</li>
+          <li>CSS and responsive layouts</li>
+          <li>JavaScript, browser events, and APIs</li>
+          <li>Git and GitHub</li>
+        </ul>
+      </section>
+    </div>
+    <section class="work" aria-labelledby="projects">
+      <p class="section-label" aria-hidden="true">03 / Selected work</p>
       <h2 id="projects">Course Projects</h2>
-      <ul class="projects">
+      <ul class="projects" role="list">
         <li>
-          <a href="https://github.com/Eric2626/Web-programming-live-site/blob/main/teamproject/index.html">Memory Match</a>
+          <span class="project-meta">01 / Team project</span>
+          <h3><a href="https://github.com/Eric2626/Web-programming-live-site/blob/main/teamproject/index.html">Memory Match</a></h3>
           <p>A team-built browser game with timed challenges, practice, and a two-player mode.</p>
         </li>
         <li>
-          <a href="https://github.com/Eric2626/Web-programming-live-site/blob/main/week4/task3_interactive_todo_list.html">Interactive To-Do List</a>
+          <span class="project-meta">02 / JavaScript</span>
+          <h3><a href="https://github.com/Eric2626/Web-programming-live-site/blob/main/week4/task3_interactive_todo_list.html">Interactive To-Do List</a></h3>
           <p>A JavaScript exercise in handling user actions and updating a task list.</p>
         </li>
         <li>
-          <a href="https://github.com/Eric2626/Web-programming-live-site/blob/main/week7/book-search.html">Book Search</a>
+          <span class="project-meta">03 / Web APIs</span>
+          <h3><a href="https://github.com/Eric2626/Web-programming-live-site/blob/main/week7/book-search.html">Book Search</a></h3>
           <p>A search page that fetches book data and displays matching titles.</p>
         </li>
       </ul>
     </section>
   </main>
+  <footer><div class="wrap">Eric Munkhtulga Davaasuren · Web Programming</div></footer>
 </body>
 </html>
