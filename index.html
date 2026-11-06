@@ -38,6 +38,24 @@
     h2, h3 {
       margin-top: 0;
     }
+    .projects {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(min(100%, 13rem), 1fr));
+      gap: .75rem;
+      list-style: none;
+      padding: 0;
+    }
+    .projects li {
+      background: #eff4f9;
+      border-radius: .5rem;
+      padding: 1rem;
+    }
+    .projects a {
+      font-weight: 700;
+    }
+    .projects p {
+      margin: .4rem 0 0;
+    }
     a {
       color: #154c91;
     }
@@ -67,7 +85,7 @@
     </section>
     <section aria-labelledby="projects">
       <h2 id="projects">Course Projects</h2>
-      <ul>
+      <ul class="projects">
         <li>
           <a href="https://github.com/Eric2626/Web-programming-live-site/blob/main/teamproject/index.html">Memory Match</a>
           <p>A team-built browser game with timed challenges, practice, and a two-player mode.</p>
