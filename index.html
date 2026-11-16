@@ -205,6 +205,68 @@
       .react-search-label, .react-search-field { width: 100%; }
     }
 
+    /* Subtle portfolio hover effects (CSS, independent of React). */
+    .projects li {
+      transition: transform .25s ease, border-color .25s ease,
+                  box-shadow .25s ease, background-color .25s ease;
+    }
+    .projects li:hover,
+    .projects li:focus-within {
+      transform: translateY(-6px);
+      border-color: var(--blue);
+      background-color: #1a2841;
+      box-shadow: 0 14px 30px rgba(0, 0, 0, .28), 0 0 18px rgba(167, 195, 255, .10);
+    }
+    .projects li:nth-child(2):hover,
+    .projects li:nth-child(2):focus-within { border-color: var(--gold); }
+    .projects li:nth-child(3):hover,
+    .projects li:nth-child(3):focus-within { border-color: #c5b4f9; }
+
+    .portrait {
+      transition: transform .28s ease, box-shadow .28s ease, border-color .28s ease;
+    }
+    .portrait:hover {
+      transform: translateY(-4px) rotate(-1deg);
+      border-color: var(--gold);
+      box-shadow: .75rem .75rem 0 #3d527c, 0 0 26px rgba(167, 195, 255, .12);
+    }
+    .skills li {
+      transition: color .2s ease, background-color .2s ease,
+                  border-color .2s ease, transform .2s ease;
+    }
+    .skills li:hover {
+      transform: translateY(-3px);
+      color: var(--ink);
+      background: #253650;
+      border-color: var(--blue);
+    }
+    .start-word {
+      transition: transform .25s ease, color .25s ease, text-shadow .25s ease;
+    }
+    .start-word:hover,
+    .start-word:focus-visible {
+      transform: scale(1.045);
+    }
+    .react-filter-button {
+      transition: transform .2s ease, border-color .2s ease, background-color .2s ease;
+    }
+    .react-filter-button:hover { transform: translateY(-2px); }
+
+    @media (prefers-reduced-motion: reduce) {
+      .projects li,
+      .portrait,
+      .skills li,
+      .start-word,
+      .react-filter-button { transition: none; }
+      .projects li:hover,
+      .projects li:focus-within,
+      .portrait:hover,
+      .skills li:hover,
+      .start-word:hover,
+      .start-word:focus-visible,
+      .react-filter-button:hover { transform: none; }
+    }
+
     footer {
       border-top: 1px solid var(--line);
       color: var(--muted);
