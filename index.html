@@ -125,6 +125,86 @@
       line-height: 1.15;
       margin-block: 1.4rem .65rem;
     }
+    /* React enhancements to the original Course Projects section. */
+    .react-project-controls {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: .85rem 1rem;
+      margin-top: 1.5rem;
+    }
+    .react-filter-bar { display: flex; flex-wrap: wrap; gap: .5rem; }
+    .react-filter-button {
+      padding: .48rem .9rem;
+      border-radius: 2rem;
+      border: 1px solid var(--line);
+      background: var(--panel);
+      color: var(--muted);
+      cursor: pointer;
+      font: 600 .82rem/1.3 ui-monospace, monospace;
+      transition: border-color .15s, background-color .15s;
+    }
+    .react-filter-button:hover, .react-filter-button:focus-visible {
+      border-color: var(--blue);
+      background: #233451;
+    }
+    .react-filter-button.selected {
+      color: #09101e;
+      background: var(--blue);
+      border-color: var(--blue);
+    }
+    .react-search-field {
+      width: min(100%, 15rem);
+      padding: .5rem .75rem;
+      border: 1px solid var(--line);
+      border-radius: .35rem;
+      background: var(--panel);
+      color: var(--ink);
+      font: inherit;
+      font-size: .9rem;
+    }
+    .react-search-field::placeholder { color: var(--muted); }
+    .react-search-field:focus-visible { outline: 2px solid var(--gold); outline-offset: 3px; }
+    .visually-hidden {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      padding: 0;
+      overflow: hidden;
+      clip: rect(0, 0, 0, 0);
+      white-space: nowrap;
+      border: 0;
+    }
+    .react-project-count {
+      margin-top: .8rem !important;
+      color: var(--muted);
+      font: 600 .78rem/1.5 ui-monospace, monospace;
+    }
+    .react-no-results {
+      margin-top: 1.5rem;
+      border: 1px dashed var(--line);
+      padding: 1.25rem;
+      color: var(--muted);
+    }
+    .project-tech { display: flex; flex-wrap: wrap; gap: .35rem; margin-block: 1.1rem; }
+    .project-tech span {
+      border: 1px solid var(--line);
+      border-radius: 1rem;
+      padding: .1rem .45rem;
+      font: 600 .68rem/1.8 ui-monospace, monospace;
+      color: var(--muted);
+    }
+    .project-actions { display: flex; flex-wrap: wrap; gap: .8rem; margin-top: .9rem; }
+    .project-actions a {
+      font: 600 .78rem/1.6 ui-monospace, monospace;
+      text-decoration: none;
+    }
+    .project-actions a:hover { text-decoration: underline; }
+    @media (max-width: 44rem) {
+      .react-search-label, .react-search-field { width: 100%; }
+    }
+
     footer {
       border-top: 1px solid var(--line);
       color: var(--muted);
@@ -348,12 +428,14 @@
           <li>CSS and responsive layouts</li>
           <li>JavaScript, browser events, and APIs</li>
           <li>Git and GitHub</li>
+          <li>React components, props, and state</li>
         </ul>
       </section>
     </div>
     <section class="work" aria-labelledby="projects">
       <p class="section-label" aria-hidden="true">03 / Selected work</p>
       <h2 id="projects">Course Projects</h2>
+      <div id="react-projects-root">
       <ul class="projects" role="list">
         <li>
           <span class="project-meta">01 / Team project</span>
@@ -370,10 +452,24 @@
           <h3><a href="https://github.com/Eric2626/Web-programming-live-site/blob/main/week7/book-search.html">Book Search</a></h3>
           <p>A search page that fetches book data and displays matching titles.</p>
         </li>
+        <li>
+          <span class="project-meta">04 / React components</span>
+          <h3><a href="https://eric2626.github.io/Web-programming-live-site/week11/task11/live/index.html">Student Directory</a></h3>
+          <p>Three student profile cards built with reusable React components and props.</p>
+        </li>
+        <li>
+          <span class="project-meta">05 / React practice</span>
+          <h3><a href="https://eric2626.github.io/Web-programming-live-site/week11/course-catalog/live/index.html">Course Catalog</a></h3>
+          <p>A React course list using props, map(), and required or elective badges.</p>
+        </li>
       </ul>
+      </div>
     </section>
   </main>
   <script type="module" src="arcade.js"></script>
   <footer><div class="wrap">Eric Munkhtulga Davaasuren · Web Programming</div></footer>
+  <script src="https://unpkg.com/react@18/umd/react.production.min.js" crossorigin defer></script>
+  <script src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js" crossorigin defer></script>
+  <script src="react-projects.js" defer></script>
 </body>
 </html>
